@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Ma ville – MB</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{
+      font-family:"Helvetica Neue",Arial,sans-serif;
+      color:#000;
+      background-image: url('img/home2.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+    }
+    
+    /* --- LIGHTER OVERLAY (60% instead of 85%) --- */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(255, 255, 255, 0.60); /* ← More transparent = more visible background */
+      z-index: -1;
+    }
+    
+    /* --- NAV & LAYOUT --- */
+    nav{position:fixed;top:0;left:0;right:0;background:#fff;border-bottom:1px solid #e5e5e5;padding:20px 30px;z-index:100;}
+    nav ul{list-style:none;display:flex;gap:25px;}
+    nav a{color:#000;text-decoration:none;font-size:.9rem;letter-spacing:.3px;}
+    nav a:hover{opacity:.6;}
+    .container{max-width:900px;margin:90px auto 60px;padding:0 30px;position:relative;z-index:1;}
+    
+    /* --- CENTERED TITLE --- */
+    h1{margin-bottom:30px;font-size:2rem;font-weight:500;text-align:center;}
+    
+    .home-fixe{position:fixed;bottom:12px;right:12px;width:80px;opacity:.8;transition:opacity .2s;}
+    .home-fixe:hover{opacity:1;}
+
+    /* --- SIDE-BY-SIDE IMAGES --- */
+    .gallery{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;}
+    
+    figure{width:280px;position:relative;overflow:hidden;border-radius:8px;cursor:pointer;aspect-ratio:1/1;background:#f0f0f0;}
+    
+    figure img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s ease;}
+    figure:hover img{transform:scale(1.05);}
+    
+    /* --- CAPTION: hidden, shown on click only --- */
+    figcaption{
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,0.9);
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:25px;
+      opacity:0;
+      transition:opacity 0.4s ease;
+      font-size:0.95rem;
+      line-height:1.4;
+    }
+    
+    figure.clicked figcaption{opacity:1;}
+  </style>
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="cv.html">Mon CV</a></li>
+      <li><a href="ville.html" aria-current="page">Ma ville</a></li>
+      <li><a href="projets.html">Mes projets</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h1>Ma Ville</h1>
+    
+    <div class="gallery">
+      <figure onclick="this.classList.toggle('clicked')">
+        <img src="img/ville1.jpeg" alt="Basilique Fourvière">
+        <figcaption>
+          L'Algérie est un vaste pays d'Afrique du Nord qui s'étend de la côte méditerranéenne
+           jusqu'au cœur du Sahara, lequel couvre plus des quatre cinquièmes de son territoire. Façonnée 
+           par diverses civilisations au fil des millénaires, elle mêle un 
+          héritage arabe, berbère et islamique à de fortes influences méditerranéennes et sahariennes.
+        </figcaption>
+      </figure>
+
+      <figure onclick="this.classList.toggle('clicked')">
+        <img src="img/ville2.jpeg" alt="Vieux Lyon">
+        <figcaption>
+          Bordj Bou Arreridj Ville algérienne située à environ 215 kilomètres au sud-est d'Alger. 
+          Capitale de la steppe, mélange de modernité et de traditions. Connue sous le nom d'El Bordj.
+        </figcaption>
+      </figure>
+
+      <figure onclick="this.classList.toggle('clicked')">
+        <img src="img/ville3.jpg" alt="Vieux Lyon">
+        <figcaption>
+          El Anseur est une ville et une commune de la wilaya de Bordj Bou Arréridj, en Algérie. Selon le recensement de 1998, elle compte 11 170 habitants.
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <a href="index.html"><img src="img/home.png" alt="home" class="home-fixe"></a>
+
+  <script>
+    // Close expanded images when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('figure')) {
+        document.querySelectorAll('figure.clicked').forEach(f => {
+          f.classList.remove('clicked');
+        });
+      }
+    });
+  </script>
+</body>
+</html>

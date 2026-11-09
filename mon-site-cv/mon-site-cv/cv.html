@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Mon CV – MB</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    
+    /* --- BODY WITH BACKGROUND IMAGE --- */
+    body{
+      font-family:"Helvetica Neue",Arial,sans-serif;
+      color:#000;
+      background-image: url('img/home2.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      position: relative;
+    }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(255, 255, 255, 0.55);
+      z-index: -1;
+    }
+    
+    /* --- NAV & LAYOUT --- */
+    nav{position:fixed;top:0;left:0;right:0;background:#fff;border-bottom:1px solid #e5e5e5;padding:20px 30px;z-index:100;}
+    nav ul{list-style:none;display:flex;gap:25px;}
+    nav a{color:#000;text-decoration:none;font-size:.9rem;letter-spacing:.3px;}
+    nav a:hover{opacity:.6;}
+    
+    .container{
+      max-width:760px; 
+      margin:90px auto 60px; 
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      position: relative;
+      z-index: 1;
+    }
+    
+    h1{margin-bottom:8px;font-size:2.2rem;font-weight:500;}
+    h2{margin:1.8em 0 .6em;font-size:1.3rem;font-weight:500;}
+    
+    /* --- PHOTO: ENLARGES ON HOVER --- */
+    .photo-cv{
+      float:right;
+      width:150px;
+      margin-left:25px;
+      border-radius:4px;
+      cursor: pointer; /* Shows it's interactive */
+      transition: transform 0.3s ease; /* Smooth animation */
+    }
+    
+    .photo-cv:hover{
+      transform: scale(1.25); /* Makes it 25% bigger on hover */
+    }
+    
+    table{width:100%;border-collapse:collapse;margin-top:10px;background:#fff;border-radius:4px;overflow:hidden;}
+    th,td{padding:8px 12px;border-bottom:1px solid #e5e5e5;text-align:left;}
+    th{font-weight:500;background:#f9f9f9;}
+    
+    ul{list-style:disc inside;margin-left:10px;}
+    
+    .home-fixe{position:fixed;bottom:12px;right:12px;width:80px;opacity:.8;transition:opacity .2s;z-index:200;}
+    .home-fixe:hover{opacity:1;}
+  </style>
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="cv.html" aria-current="page">Mon CV</a></li>
+      <li><a href="ville.html">Ma ville</a></li>
+      <li><a href="projets.html">Mes projets</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h1>Moussab Belouahri</h1>
+    <img id="photo-cv" src="img/photo-cv.jpg" alt="photo CV" class="photo-cv">
+
+    <h2>Mini-biographie</h2>
+    <p>Mon nom complet est Moussab Belouahri Je suis né le 5 mars 2004 en Algérie, dans la ville de Bordj Bou Arreridj.</p>
+
+    <h2>Expérience professionnelle</h2>
+    <table>
+      <thead><tr><th>Période</th><th>Poste</th><th>Entreprise</th></tr></thead>
+      <tbody>
+        <tr><td>2019-2021</td><td>Traducteur de romans et de mangas</td><td>Sur le site web Black Heart et les romans arabes</td></tr>
+        <tr><td>2022 (6 mois)</td><td>Alternant de Installation de caméras de surveillance</td><td>al haje for caméras</td></tr>
+        <tr><td>2025 (3 mois)</td><td>Stagiaire Développeur web</td><td>Institut Nationale de la formation professionnelle (INSFP-bba)</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Diplômes</h2>
+    <ul><li>2027 – Développement Web & Mobile (INSFP-bba)</li><li>2024 – Le reste n'a aucune importance en programmation.</li></ul>
+
+    <h2>Langues</h2>
+    <ul><li>arabe – langue maternelle</li><li>Anglais – niveau C1</li><li>Français – niveau 1</li></ul>
+
+    <h2>Passions & loisirs</h2>
+    <ul><li>Lire des livres, randonnée, jeux vidéo, Sport, En écrivant, voyage</li></ul>
+  </div>
+
+  <a href="index.html"><img src="img/home.png" alt="home" class="home-fixe"></a>
+
+  <script>
+    const saved = sessionStorage.getItem('cvPhoto');
+    if (saved) document.getElementById('photo-cv').src = saved;
+  </script>
+</body>
+</html>

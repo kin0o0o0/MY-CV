@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Mes contacts – MB</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    
+    /* --- SAME BACKGROUND AS OTHER PAGES --- */
+    body{
+      font-family:"Helvetica Neue",Arial,sans-serif;
+      color:#000;
+      background-image: url('img/home2.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+    }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(255, 255, 255, 0.60);
+      z-index: -1;
+    }
+    
+    /* --- NAV & LAYOUT --- */
+    nav{position:fixed;top:0;left:0;right:0;background:#fff;border-bottom:1px solid #e5e5e5;padding:20px 30px;z-index:100;}
+    nav ul{list-style:none;display:flex;gap:25px;}
+    nav a{color:#000;text-decoration:none;font-size:.9rem;letter-spacing:.3px;}
+    nav a:hover{opacity:.6;}
+    
+    main{
+      flex:1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:30px;
+      min-height:100vh;
+      position:relative;
+      z-index:1;
+    }
+    
+    /* --- CONTACT CARD (like cv.html container) --- */
+    .card{
+      max-width:600px;
+      width:100%;
+      background: rgba(255, 255, 255, 0.92);
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      text-align:center;
+    }
+    
+    h1{margin-bottom:30px;font-size:2rem;font-weight:500;}
+    
+    /* --- ICON GRID --- */
+    .contact-gallery{
+      display:flex;
+      gap:30px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+    
+    .contact-item{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      cursor:pointer;
+      padding:20px;
+      border-radius:8px;
+      background:rgba(255,255,255,0.7);
+      transition:background-color 0.3s ease, transform 0.3s ease;
+      min-width:120px;
+    }
+    
+    .contact-item:hover{
+      background:rgba(255,255,255,0.9);
+      transform:translateY(-3px);
+    }
+    
+    .contact-item .icon{
+      width:48px;
+      height:48px;
+      color:#000;
+      transition:transform 0.3s ease;
+    }
+    
+    .contact-item:hover .icon{
+      transform:scale(1.1);
+    }
+    
+    /* --- INFO: HIDDEN BY DEFAULT --- */
+    .contact-item .info{
+      margin-top:10px;
+      text-align:center;
+      opacity:0;
+      max-height:0;
+      overflow:hidden;
+      transition:opacity 0.4s ease, max-height 0.4s ease, margin-top 0.4s ease;
+    }
+    
+    .contact-item.clicked .info{
+      opacity:1;
+      max-height:80px;
+      margin-top:15px;
+    }
+    
+    .contact-item .info .label{
+      display:block;
+      font-weight:500;
+      font-size:0.9rem;
+      color:#333;
+    }
+    
+    .contact-item .info .value{
+      display:block;
+      font-size:0.85rem;
+      color:#555;
+      margin-top:4px;
+      word-break:break-all;
+    }
+    
+    .home-fixe{position:fixed;bottom:12px;right:12px;width:80px;opacity:.8;transition:opacity .2s;z-index:200;}
+    .home-fixe:hover{opacity:1;}
+  </style>
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="cv.html">Mon CV</a></li>
+      <li><a href="ville.html">Ma ville</a></li>
+      <li><a href="projets.html">Mes projets</a></li>
+      <li><a href="contact.html" aria-current="page">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="card">
+      <h1>Mes coordonnées</h1>
+      
+      <div class="contact-gallery">
+        <!-- Email -->
+        <div class="contact-item" onclick="this.classList.toggle('clicked')" aria-label="E-mail">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
+            <path d="m3 7 9 6 9-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="info">
+            <span class="label">E-mail</span>
+            <span class="value">mousaabbelouahri@gmail.com</span>
+          </div>
+        </div>
+
+        <!-- Phone -->
+        <div class="contact-item" onclick="this.classList.toggle('clicked')" aria-label="Téléphone">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22 16.92V21a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 3 8.18 2 2 0 0 1 5 6h4.09a1 1 0 0 1 1 .75l1 3a1 1 0 0 1-.27 1L9.91 12a16 16 0 0 0 3 3l1.49-1.28a1 1 0 0 1 1-.27l3 1a1 1 0 0 1 .75 1V16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="info">
+            <span class="label">Téléphone</span>
+            <span class="value">0542856119</span>
+          </div>
+        </div>
+
+        <!-- LinkedIn -->
+        <div class="contact-item" onclick="this.classList.toggle('clicked')" aria-label="LinkedIn">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8.98h5V24H0V8.98zM8.98 8.98h4.74v2.05h.07c.66-1.24 2.27-2.55 4.67-2.55 5 0 5.92 3.29 5.92 7.57V24h-5v-7.03c0-1.68-.03-3.84-2.34-3.84-2.34 0-2.7 1.83-2.7 3.71V24h-5V8.98z"/>
+          </svg>
+          <div class="info">
+            <span class="label">LinkedIn</span>
+            <span class="value"><a href="https://www.linkedin.com/in/mousaab-belouahri-0a189839b/" target="_blank" rel="noopener">mousaab-belouahri</a></span>
+          </div>
+        </div>
+
+        <!-- GitHub -->
+        <div class="contact-item" onclick="this.classList.toggle('clicked')" aria-label="GitHub">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.1c-3.3.7-4-1.6-4-1.6-.5-1.2-1.2-1.5-1.2-1.5-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1.7 1.8 2.7 1.3.1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.9 0-1.3.5-2.3 1.2-3.2-.1-.3-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.9.1 3.2.8.9 1.2 2 1.2 3.2 0 4.6-2.7 5.6-5.3 5.9.4.3.8 1 .8 2v3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/>
+          </svg>
+          <div class="info">
+            <span class="label">GitHub</span>
+            <span class="value"><a href="https://github.com/kin0o0o0" target="_blank" rel="noopener">kin0o0o0</a></span>
+          </div>
+        </div>
+
+        <!-- Location -->
+        <div class="contact-item" onclick="this.classList.toggle('clicked')" aria-label="Adresse">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C8.7 2 6 4.7 6 8c0 5.2 6 12 6 12s6-6.8 6-12c0-3.3-2.7-6-6-6zm0 8.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 5.5 12 5.5s2.5 1.1 2.5 2.5S13.4 10.5 12 10.5z"/>
+          </svg>
+          <div class="info">
+            <span class="label">Adresse</span>
+            <span class="value"><a href="https://www.google.com/maps/place/%D8%A7%D9%84%D8%B9%D9%86%D8%A7%D8%B5%D8%B1+%D8%A8%D8%B1%D8%AC+%D8%A8%D9%88%D8%B9%D8%B1%D9%8A%D8%B1%D9%8A%D8%AC%E2%80%AD/@36.0398935,4.8168129,17z/data=!3m1!4b1!4m6!3m5!1s0x128cbb0077d80389:0x6b77f5a05d5d846e!8m2!3d36.0398935!4d4.8168129!16s%2Fg%2F11xvh989ky?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA2N0gBUAM%3D" target="_blank" rel="noopener">Bordj Bou Arreridj/El Anaser</a></span>
+          </div>
+        </div>
+
+        <!-- Instagram -->
+        <div class="contact-item" onclick="this.classList.toggle('clicked')" aria-label="Instagram">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/>
+            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+            <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/>
+          </svg>
+          <div class="info">
+            <span class="label">Instagram</span>
+            <span class="value"><a href="https://www.instagram.com/mosab__belouahri/?__pwa=1" target="_blank" rel="noopener">@mosab__belouahri</a></span>
+          </div>
+        </div>
+
+        <!-- Discord -->
+        <div class="contact-item" onclick="this.classList.toggle('clicked')" aria-label="Discord">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20.3 4.37A18.4 18.4 0 0 0 15.9 3c-.2.36-.38.74-.54 1.13a17.14 17.14 0 0 0-5.1 0C10.1 3.75 9.92 3.37 9.72 3a18.4 18.4 0 0 0-4.4 1.37C.9 9.45 0 14.4 0 19.3a18.6 18.6 0 0 0 5.68 2.43c.42-.58.8-1.2 1.14-1.84a12.3 12.3 0 0 1-1.7-.83c.14-.1 1.37-.98 2.43-2.12a12.7 12.7 0 0 0 8.44 0c1.06 1.14 2.29 2.02 2.43 2.12a12.3 12.3 0 0 1-1.7.83c.34.64.72 1.26 1.14 1.84A18.6 18.6 0 0 0 24 19.3c0-4.9-.9-9.85-3.7-14.93zM8.46 16.25c-1.24 0-2.26-1.17-2.26-2.6s1-2.6 2.26-2.6c1.27 0 2.29 1.17 2.26 2.6.03 1.43-1 2.6-2.26 2.6zm7.08 0c-1.24 0-2.26-1.17-2.26-2.6s1-2.6 2.26-2.6c1.27 0 2.29 1.17 2.26 2.6.03 1.43-1 2.6-2.26 2.6z"/>
+          </svg>
+          <div class="info">
+            <span class="label">Discord</span>
+            <span class="value">mosab6982</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <a href="index.html"><img src="img/home.png" alt="home" class="home-fixe"></a>
+
+  <script>
+    // Close expanded items when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.contact-item') && !e.target.closest('.card')) {
+        document.querySelectorAll('.contact-item.clicked').forEach(item => {
+          item.classList.remove('clicked');
+        });
+      }
+      // If clicking inside card but not on an item, also close all
+      if (e.target.closest('.card') && !e.target.closest('.contact-item')) {
+        document.querySelectorAll('.contact-item.clicked').forEach(item => {
+          item.classList.remove('clicked');
+        });
+      }
+    });
+  </script>
+</body>
+</html>

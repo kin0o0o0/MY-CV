@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Accueil – MB</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    
+    /* --- BODY WITH BACKGROUND IMAGE --- */
+    body{
+      font-family:"Helvetica Neue",Arial,sans-serif;
+      color:#000;
+      background-image: url('img/home2.jpeg'); /* ← Your background image */
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      position: relative;
+    }
+    
+    /* --- LIGHTER OVERLAY FOR BETTER VISIBILITY --- */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(255, 255, 255, 0.65); /* Lighter overlay - background more visible */
+      z-index: -1;
+    }
+    
+    /* --- NAV & LAYOUT --- */
+    nav{position:fixed;top:0;left:0;right:0;background:#fff;border-bottom:1px solid #e5e5e5;padding:20px 30px;z-index:100;}
+    nav ul{list-style:none;display:flex;gap:25px;}
+    nav a{color:#000;text-decoration:none;font-size:.9rem;letter-spacing:.3px;}
+    nav a:hover{opacity:.6;}
+    
+    main{
+      flex:1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:30px;
+      position:relative;
+      z-index:1;
+      min-height:100vh;
+    }
+    
+    h1{font-size:clamp(2.5rem, 8vw, 5rem);font-weight:400;letter-spacing:-.02em;}
+    p{margin-top:.5em;font-size:1.1rem;font-weight:300;color:#555;}
+    
+    .home-fixe{position:fixed;bottom:12px;right:12px;width:80px;opacity:.8;transition:opacity .2s;z-index:200;}
+    .home-fixe:hover{opacity:1;}
+    
+    .upload{margin-top:2em;}
+    .upload input{display:none;}
+    .upload label{background:#000;color:#fff;padding:10px 20px;border-radius:4px;cursor:pointer;font-size:.9rem;}
+    .upload label:hover{background:#333;}
+  </style>
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html" aria-current="page">Accueil</a></li>
+      <li><a href="cv.html">Mon CV</a></li>
+      <li><a href="ville.html">Ma ville</a></li>
+      <li><a href="projets.html">Mes projets</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div>
+      <h1>Bienvenue sur mon site</h1>
+      <p>Je suis stagiaire au premier semestre du programme, 
+        spécialisé en développement web et multimédia,
+         à l'Institut national de formation professionnelle (INSFP-bba).
+      </p>
+    </div>
+  </main>
+
+  <!-- image home fixe -->
+  <a href="index.html"><img src="img/home.png" alt="home" class="home-fixe"></a>
+
+  <script>
+    document.getElementById('photoUpload').addEventListener('change', function (e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function (ev) {
+        // stockage simple (session) : vous pourriez envoyer vers un serveur
+        sessionStorage.setItem('cvPhoto', ev.target.result);
+        alert('Photo ajoutée ! Elle apparaîtra sur votre CV.');
+      };
+      reader.readAsDataURL(file);
+    });
+  </script>
+</body>
+</html>
